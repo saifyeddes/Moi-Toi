@@ -1,56 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFD1D9"
-    android:padding="24dp">
+    android:orientation="vertical"
+    android:background="#FFF5F5">
 
-    <!-- Cercle contenant l'avatar femme -->
-    <ImageView
-        android:id="@+id/imgGirl"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/ic_girl"
-        android:background="@drawable/circle_bg_girl"
-        android:scaleType="centerCrop" />
+    <!-- Partie Homme -->
+    <LinearLayout
+        android:id="@+id/layoutMan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/card_background_blue"> <!-- Bleu adouci -->
 
-    <!-- Cercle contenant l'avatar homme -->
-    <ImageView
-        android:id="@+id/imgBoy"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/imgGirl"
-        android:layout_marginTop="-50dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_boy"
-        android:background="@drawable/circle_bg_boy"
-        android:scaleType="centerCrop" />
+        <ImageView
+            android:id="@+id/iconMan"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_boy"
+            android:background="@drawable/circle_bg_boy"
+            android:scaleType="centerCrop"
+            android:padding="16dp" />
 
-    <TextView
-        android:id="@+id/tvMatchText"
-        android:layout_below="@id/imgBoy"
-        android:layout_marginTop="24dp"
-        android:layout_centerHorizontal="true"
-        android:text="its your match"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        android:textColor="#333"
-        android:fontFamily="cursive" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Homme"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginTop="12dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
 
-    <!-- Bouton START CHAT -->
-    <Button
-        android:id="@+id/btnStartChat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvMatchText"
-        android:layout_marginTop="24dp"
-        android:layout_centerHorizontal="true"
-        android:text="START CHAT"
-        android:textStyle="bold"
-        android:textColor="#fff"
-        android:backgroundTint="#FF5B8C"
-        android:paddingLeft="32dp"
-        android:paddingRight="32dp" />
-</RelativeLayout>
+    <!-- Ligne de séparation -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#AAAAAA" />
+
+    <!-- Partie Femme -->
+    <LinearLayout
+        android:id="@+id/layoutWoman"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/card_background_pink"> <!-- Rose adouci -->
+
+        <ImageView
+            android:id="@+id/iconWoman"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_girl"
+            android:background="@drawable/circle_bg_girl"
+            android:scaleType="centerCrop"
+            android:padding="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Femme"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginTop="12dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+</LinearLayout>
