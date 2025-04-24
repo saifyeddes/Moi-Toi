@@ -11,7 +11,8 @@
         android:theme="@style/Theme.MoiToi">
 
         <!-- Déclare MatchActivity comme écran principal -->
-        <activity android:name=".MatchActivity">
+        <activity android:name=".MatchActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,5 +21,11 @@
 
         <!-- MainActivity existe toujours mais n'est plus la page de démarrage -->
         <activity android:name=".ui.theme.MainActivity" />
+
+        <!-- Ajout des activités du quiz -->
+        <activity android:name=".CreateQuizActivity" />
+        <activity android:name=".ManageQuestionsActivity" />
+        <activity android:name=".QuizConfirmationActivity" />
+
     </application>
 </manifest>

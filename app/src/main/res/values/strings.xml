@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Moi&amp;Toi</string>
+    <string name="icon_description">Image d’un couple</string>
+    <string name="enter_code">Entrer le code pour joindre le quiz</string>
+    <string name="partner_code_hint">Code du partenaire</string>
+    <string name="cancel">Annuler</string>
+    <string name="confirm">Confirmer</string>
 </resources>

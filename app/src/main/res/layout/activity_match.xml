@@ -3,24 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF5F5">
+    android:background="#FFF5F5"
+    android:padding="24dp"
+    android:gravity="center">
 
-    <!-- Partie Homme -->
+    <!-- Carte Homme -->
     <LinearLayout
         android:id="@+id/layoutMan"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
         android:orientation="vertical"
+        android:background="@drawable/card_background_blue"
+        android:gravity="center"
+        android:elevation="6dp"
+        android:padding="24dp"
         android:clickable="true"
         android:focusable="true"
-        android:background="@drawable/card_background_blue"> <!-- Bleu adouci -->
+        android:layout_marginBottom="16dp">
 
         <ImageView
             android:id="@+id/iconMan"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/ic_boy"
             android:background="@drawable/circle_bg_boy"
             android:scaleType="centerCrop"
@@ -31,33 +36,29 @@
             android:layout_height="wrap_content"
             android:text="Homme"
             android:textSize="18sp"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="12dp"
             android:textStyle="bold"/>
     </LinearLayout>
 
-    <!-- Ligne de séparation -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#AAAAAA" />
-
-    <!-- Partie Femme -->
+    <!-- Carte Femme -->
     <LinearLayout
         android:id="@+id/layoutWoman"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
         android:orientation="vertical"
+        android:background="@drawable/card_background_pink"
+        android:gravity="center"
+        android:elevation="6dp"
+        android:padding="24dp"
         android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/card_background_pink"> <!-- Rose adouci -->
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/iconWoman"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/ic_girl"
             android:background="@drawable/circle_bg_girl"
             android:scaleType="centerCrop"
@@ -68,9 +69,8 @@
             android:layout_height="wrap_content"
             android:text="Femme"
             android:textSize="18sp"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="12dp"
             android:textStyle="bold"/>
     </LinearLayout>
-
 </LinearLayout>

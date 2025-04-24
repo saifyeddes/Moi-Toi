@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#FAFAFA">
+
+    <!-- Image at the top -->
+    <ImageView
+        android:layout_width="286dp"
+        android:layout_height="327dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/icon_description"
+        android:src="@drawable/couple" />
+
+    <!-- Text label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_code"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Input field with left/right icons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp">
+
+        <EditText
+            android:id="@+id/partnerCodeInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/partner_code_hint"
+            android:background="@drawable/edittext_background"
+            android:padding="16dp"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:inputType="text"
+            android:importantForAutofill="yes"
+            android:autofillHints="username" />
+
+    </LinearLayout>
+
+    <!-- Button Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnCancelBottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:backgroundTint="#FF4081"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:theme="@style/Widget.AppCompat.Button.Borderless" />
+
+        <Button
+            android:id="@+id/btnConfirmBottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/confirm"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:padding="12dp" />
+    </LinearLayout>
+</LinearLayout>
