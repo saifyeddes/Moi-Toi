@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00BFFF">
+
+    <!-- ÉCRAN D'ACCUEIL -->
+    <LinearLayout
+        android:id="@+id/screenStart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="visible"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/tvQuizTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="QUIZ"
+            android:textSize="48sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/quiz_card_bg"
+            android:padding="30dp"
+            android:elevation="8dp" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="START"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:background="@drawable/start_button_bg"
+            android:layout_marginTop="60dp"/>
+    </LinearLayout>
+
+    <!-- ÉCRAN QUESTION -->
+    <LinearLayout
+        android:id="@+id/screenQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Which planet in the Solar System is the smallest?"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="30dp" />
+
+        <Button
+            android:id="@+id/btnA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A: Pluto"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="B: Earth"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="C: Mercury"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="D: Mars"
+            android:layout_marginBottom="10dp" />
+    </LinearLayout>
+
+    <!-- ÉCRAN VICTOIRE -->
+    <LinearLayout
+        android:id="@+id/screenWin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GREAT!"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YOU WIN!"
+            android:textSize="48sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/quiz_card_bg"
+            android:padding="30dp"
+            android:elevation="8dp" />
+    </LinearLayout>
+
+    <!-- ÉCRAN DÉFAITE -->
+    <LinearLayout
+        android:id="@+id/screenLose"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oh no!"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YOU LOST!"
+            android:textSize="48sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/quiz_card_bg"
+            android:padding="30dp"
+            android:elevation="8dp" />
+
+        <Button
+            android:id="@+id/btnTryAgain"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="TRY AGAIN"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/start_button_bg" />
+    </LinearLayout>
+</RelativeLayout>
