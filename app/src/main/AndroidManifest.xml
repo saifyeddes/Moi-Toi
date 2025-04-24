@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="#FFF5F5">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.moitoi">
 
-    <Button
-        android:id="@+id/btnCreate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Créer un Quiz"
-        android:background="#FF4081"
-        android:textColor="#FFFFFF"
-        android:padding="16dp"
-        android:layout_marginBottom="16dp" />
+    <application
+        android:allowBackup="true"
+        android:label="MoiToi"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MoiToi">
 
-    <Button
-        android:id="@+id/btnAnswer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Répondre au Quiz"
-        android:background="#3F51B5"
-        android:textColor="#FFFFFF"
-        android:padding="16dp" />
-</LinearLayout>
+        <!-- Déclare MatchActivity comme écran principal -->
+        <activity android:name=".MatchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity existe toujours mais n'est plus la page de démarrage -->
+        <activity android:name=".ui.theme.MainActivity" />
+    </application>
+</manifest>
