@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "770836646075",
+    "project_id": "moiettoi-97972",
+    "storage_bucket": "moiettoi-97972.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770836646075:android:34ac53db63a5b979c9819e",
+        "android_client_info": {
+          "package_name": "com.example.moitoi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZ_j1rjsRD30RxdA7BdMSLkSGTqSnSN3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
