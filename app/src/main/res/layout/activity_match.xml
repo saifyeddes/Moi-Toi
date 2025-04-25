@@ -1,76 +1,82 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rootLayout"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFF5F5"
-    android:padding="24dp"
-    android:gravity="center">
+    android:background="@drawable/background_quizzles">
 
-    <!-- Carte Homme -->
     <LinearLayout
-        android:id="@+id/layoutMan"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/card_background_blue"
-        android:gravity="center"
-        android:elevation="6dp"
-        android:padding="24dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_marginBottom="16dp">
+        android:gravity="center_horizontal"
+        android:paddingTop="70dp"
+        android:paddingBottom="0dp">
 
+        <!-- Logo -->
         <ImageView
-            android:id="@+id/iconMan"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_boy"
-            android:background="@drawable/circle_bg_boy"
-            android:scaleType="centerCrop"
-            android:padding="16dp" />
+            android:id="@+id/logoImage"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/moitoi3"
+            android:contentDescription="@string/app_logo"
+           />
 
+        <!-- Moi & Toi -->
         <TextView
+            android:id="@+id/appName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Homme"
-            android:textSize="18sp"
+            android:text="Moi &amp; Toi"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="12dp"
-            android:textStyle="bold"/>
-    </LinearLayout>
+            android:textSize="42sp"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp" />
 
-    <!-- Carte Femme -->
-    <LinearLayout
-        android:id="@+id/layoutWoman"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:background="@drawable/card_background_pink"
-        android:gravity="center"
-        android:elevation="6dp"
-        android:padding="24dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <ImageView
-            android:id="@+id/iconWoman"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_girl"
-            android:background="@drawable/circle_bg_girl"
-            android:scaleType="centerCrop"
-            android:padding="16dp" />
-
+        <!-- Subtitle -->
         <TextView
+            android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Femme"
-            android:textSize="18sp"
+            android:text="Jouons !"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="12dp"
-            android:textStyle="bold"/>
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginTop="250dp" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/subDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mesurez votre amour en questions !"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="50dp" />
+
+        <!-- Bouton jouer -->
+        <Button
+            android:id="@+id/playNowButton"
+            android:layout_width="280dp"
+            android:layout_height="58dp"
+            android:background="@drawable/rounded_button"
+            android:text="JOUER MAINTENANT"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Bouton à propos -->
+        <Button
+            android:id="@+id/aboutButton"
+            android:layout_width="280dp"
+            android:layout_height="58dp"
+            android:background="@drawable/rounded_border_button"
+            android:text="À PROPOS"
+            android:textAllCaps="true"
+            android:textColor="#7C4DFF"
+            android:textSize="18sp" />
+
     </LinearLayout>
-</LinearLayout>
+
+</ScrollView>

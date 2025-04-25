@@ -5,4 +5,6 @@
     <string name="partner_code_hint">Code du partenaire</string>
     <string name="cancel">Annuler</string>
     <string name="confirm">Confirmer</string>
+    <string name="app_logo">Logo de lapplication Moi  Toi</string>
+
 </resources>

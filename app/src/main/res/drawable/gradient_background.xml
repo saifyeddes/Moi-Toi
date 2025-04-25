@@ -1,0 +1,13 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fond dégradé -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#1E0051"
+                android:endColor="#240F68"
+                android:angle="270"/>
+        </shape>
+    </item>
+
+    <!-- Ajoute ici un motif, une image ou des bulles si tu veux les dessiner -->
+</layer-list>

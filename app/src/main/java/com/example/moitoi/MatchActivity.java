@@ -24,6 +24,8 @@ public class MatchActivity extends AppCompatActivity {
         Map<String,Object> users=new HashMap<>();
         users.put("firstname","EASY");
         users.put("lastname","TUTO");
+        users.put("numero","2041587666");
+
         firestore.collection("users").add(users).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
