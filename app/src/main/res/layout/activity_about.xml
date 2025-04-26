@@ -1,0 +1,74 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Titre centré -->
+      <!-- ton image "truc.jpg" renommée -->
+
+
+        <!-- Texte légèrement résumé -->
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Bienvenue dans 'Moi et Toi' 🎉"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+
+        <TextView
+            android:id="@+id/tvIntro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Une appli ludique et interactive pour mieux connaître tes amis ou rencontrer de nouvelles personnes. Découvrez-vous à travers des quiz fun et rapprochez-vous les uns des autres en riant !"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvAmbiance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notre équipe aime l’ambiance et la complicité. 'Moi et Toi' rend les moments partagés plus simples, plus fun, et plus connectés."
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvConclusion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rejoins-nous et profite d’un moyen amusant de créer du lien ! 🤗"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textStyle="italic"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Illustration -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+
+        <ImageView
+            android:id="@+id/ivIllustration"
+            android:layout_width="379dp"
+            android:layout_height="293dp"
+            android:contentDescription="Illustration des utilisateurs jouant au jeu"
+            android:scaleType="fitCenter"
+            android:src="@drawable/about5" />
+    </LinearLayout>
+</ScrollView>

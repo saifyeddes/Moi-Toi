@@ -7,6 +7,26 @@
     android:gravity="center"
     android:background="#FAFAFA">
 
+    <!-- Retour Button (en haut à gauche) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retour"
+            android:backgroundTint="#FF4081"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginEnd="16dp"
+            android:theme="@style/Widget.AppCompat.Button.Borderless" />
+    </LinearLayout>
+
     <!-- Image at the top -->
     <ImageView
         android:layout_width="286dp"
@@ -49,7 +69,6 @@
             android:inputType="text"
             android:importantForAutofill="yes"
             android:autofillHints="username" />
-
     </LinearLayout>
 
     <!-- Button Container -->

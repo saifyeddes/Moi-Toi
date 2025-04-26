@@ -26,6 +26,11 @@
         <activity android:name=".CreateQuizActivity" />
         <activity android:name=".ManageQuestionsActivity" />
         <activity android:name=".QuizConfirmationActivity" />
+        <activity android:name=".InterfaceChoix" />
+        <activity android:name=".RepondreQuizActivity" />
+        <activity android:name=".AboutActivity" />
+
+
 
     </application>
 </manifest>
