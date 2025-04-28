@@ -21,25 +21,24 @@ public class MatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
 
-        // Récupérer les boutons existants
+        // Récupère le bouton "JOUER MAINTENANT"
         Button playNowButton = findViewById(R.id.playNowButton);
         Button aboutButton = findViewById(R.id.aboutButton);
 
-        // Action bouton "JOUER MAINTENANT"
+        // Action lorsque l'utilisateur clique sur "JOUER MAINTENANT"
         playNowButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MatchActivity.this,InterfaceChoix
+                    .class);
+            startActivity(intent);
+        });
+
+        aboutButton.setOnClickListener(v -> {
             Intent intent = new Intent(MatchActivity.this, InterfaceChoix.class);
             startActivity(intent);
         });
 
-        // Action bouton "À PROPOS"
-        aboutButton.setOnClickListener(v -> {
-            Toast.makeText(MatchActivity.this, "À propos de l'application Moi & Toi", Toast.LENGTH_SHORT).show();
-        });
-
-        // Initialiser Firestore
         firestore = FirebaseFirestore.getInstance();
 
-        // Ajouter un utilisateur dans Firestore
         Map<String, Object> users = new HashMap<>();
         users.put("firstname", "EASY");
         users.put("lastname", "TUTO");
@@ -51,7 +50,7 @@ public class MatchActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getApplicationContext(), "Erreur Firestore : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.e("FIRESTORE_USERS", "Erreur lors de l'ajout", e);
+                    Log.e("FIRESTORE_USERS", "Erreur Firestore", e);
                 });
     }
 }

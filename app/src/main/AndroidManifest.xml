@@ -23,12 +23,14 @@
         <activity android:name=".ui.theme.MainActivity" />
 
         <!-- Ajout des activités du quiz -->
+        <activity android:name=".LandingPage" />
         <activity android:name=".CreateQuizActivity" />
         <activity android:name=".ManageQuestionsActivity" />
         <activity android:name=".QuizConfirmationActivity" />
         <activity android:name=".InterfaceChoix" />
         <activity android:name=".RepondreQuizActivity" />
         <activity android:name=".AboutActivity" />
+        <activity android:name=".AboutPage" />
 
 
 
