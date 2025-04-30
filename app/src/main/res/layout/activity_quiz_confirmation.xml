@@ -3,9 +3,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center">
+    android:gravity="center_vertical"
+    android:background="#FAFAFA">
 
-    <!-- TextView pour afficher le message de confirmation -->
+    <!-- Message de confirmation -->
     <TextView
         android:id="@+id/tvConfirmationMessage"
         android:layout_width="wrap_content"
@@ -15,5 +16,25 @@
         android:textStyle="bold"
         android:textColor="#333333"
         android:layout_marginBottom="20dp" />
+
+    <!-- Affichage du code généré -->
+    <TextView
+        android:id="@+id/tvQuizCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Code : "
+        android:textSize="18sp"
+        android:textColor="#FF4081"
+        android:layout_marginTop="20dp" />
+
+    <!-- Afficher dynamiquement le code généré -->
+    <TextView
+        android:id="@+id/tvGeneratedCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:textColor="#FF4081"
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>

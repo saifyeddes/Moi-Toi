@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_vertical"
+    android:background="#F4F4F9">
+
+    <!-- Title showing the current question number -->
+    <TextView
+        android:id="@+id/tvQuestionNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question 1"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Input field for the question -->
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question text here"
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Radio buttons for the 3 choices -->
+    <RadioGroup
+        android:id="@+id/radioGroupChoices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="32dp">
+
+        <!-- Option 1 -->
+        <RadioButton
+            android:id="@+id/rbChoice1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choice 1" />
+
+        <!-- Option 2 -->
+        <RadioButton
+            android:id="@+id/rbChoice2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choice 2" />
+
+        <!-- Option 3 -->
+        <RadioButton
+            android:id="@+id/rbChoice3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choice 3" />
+    </RadioGroup>
+
+    <!-- Button to submit the answer -->
+    <Button
+        android:id="@+id/btnSubmitAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit Answer"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#4CAF50"
+        android:padding="14dp"
+        android:layout_marginTop="16dp" />
+</LinearLayout>

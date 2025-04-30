@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class EnterQuizCodeActivity extends AppCompatActivity {
 
@@ -21,21 +25,31 @@ public class EnterQuizCodeActivity extends AppCompatActivity {
         etQuizCode = findViewById(R.id.etQuizCode);
         btnSubmitCode = findViewById(R.id.btnSubmitCode);
 
-        // Récupérer le code du quiz passé depuis CreateQuizActivity
-        String quizCode = getIntent().getStringExtra("quizCode");
-
-        // Action pour le bouton Soumettre
         btnSubmitCode.setOnClickListener(v -> {
-            String enteredCode = etQuizCode.getText().toString();
-
-            // Vérifier si le code correspond au code unique généré
-            if (enteredCode.equals(quizCode)) {
-                Intent intent = new Intent(EnterQuizCodeActivity.this, QuizConfirmationActivity.class);
-                intent.putExtra("quizCode", quizCode);  // Passer le code à la page suivante
-                startActivity(intent);
-            } else {
-                etQuizCode.setError("Code incorrect");
-            }
+            String quizCode = etQuizCode.getText().toString();
+            verifyQuizCode(quizCode);
         });
+    }
+
+    private void verifyQuizCode(String code) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("MoiEtToi")
+                .document("quiz_1")
+                .collection("user_responses")
+                .document(code)  // Recherche du quiz par son code
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            // Si le code est valide, afficher les questions
+                            Intent intent = new Intent(EnterQuizCodeActivity.this, DisplayQuestionsActivity.class);
+                            intent.putExtra("quizCode", code);  // Passer le code pour récupérer les questions
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(EnterQuizCodeActivity.this, "Code invalide", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
