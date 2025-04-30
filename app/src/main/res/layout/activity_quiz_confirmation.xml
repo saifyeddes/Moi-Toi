@@ -1,40 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center"
-    android:background="#FAFAFA">
+    android:gravity="center">
 
-    <!-- Title for confirmation -->
+    <!-- TextView pour afficher le message de confirmation -->
     <TextView
-        android:id="@+id/tvConfirmationTitle"
+        android:id="@+id/tvConfirmationMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vérifiez votre quiz"
-        android:textSize="24sp"
+        android:text="Quiz soumis avec succès !"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#333333"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="20dp" />
 
-    <!-- Summary of the questions added -->
-    <TextView
-        android:id="@+id/tvQuizSummary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Résumé des questions"
-        android:textSize="16sp"
-        android:textColor="#333333"
-        android:layout_marginBottom="24dp" />
-
-    <!-- Final Button to submit the quiz -->
-    <Button
-        android:id="@+id/btnSubmitQuiz"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Soumettre le Quiz"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FF4081"
-        android:padding="14dp" />
 </LinearLayout>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -41,29 +40,78 @@
         android:orientation="vertical"
         android:layout_marginBottom="32dp">
 
-        <RadioButton
-            android:id="@+id/rbChoice1"
+        <!-- Option 1 -->
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Choix 1"
-            android:textSize="16sp"
-            android:padding="12dp" />
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/rbChoice1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choix 1"
+                android:textSize="16sp"
+                android:padding="12dp" />
+            <EditText
+                android:id="@+id/etChoice1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Ajouter votre réponse"
+                android:background="@drawable/edittext_background"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textSize="16sp"/>
+        </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/rbChoice2"
+        <!-- Option 2 -->
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Choix 2"
-            android:textSize="16sp"
-            android:padding="12dp" />
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/rbChoice2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choix 2"
+                android:textSize="16sp"
+                android:padding="12dp" />
+            <EditText
+                android:id="@+id/etChoice2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Ajouter votre réponse"
+                android:background="@drawable/edittext_background"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textSize="16sp"/>
+        </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/rbChoice3"
+        <!-- Option 3 -->
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Choix 3"
-            android:textSize="16sp"
-            android:padding="12dp" />
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/rbChoice3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choix 3"
+                android:textSize="16sp"
+                android:padding="12dp" />
+            <EditText
+                android:id="@+id/etChoice3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Ajouter votre réponse"
+                android:background="@drawable/edittext_background"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
     </RadioGroup>
 
     <!-- Button to go to the next question -->
@@ -76,4 +124,5 @@
         android:backgroundTint="#FF4081"
         android:padding="14dp"
         android:layout_marginTop="16dp" />
+
 </LinearLayout>

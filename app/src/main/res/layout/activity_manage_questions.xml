@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center"
-    android:background="#FAFAFA">
+    android:gravity="center_vertical"
+    android:background="#F4F4F9">
 
     <!-- Title showing the current question number -->
     <TextView
@@ -13,79 +12,148 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Question 1"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#333333"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="20dp" />
 
     <!-- Input field for the question -->
     <EditText
         android:id="@+id/etQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Entrer la question"
+        android:hint="Entrez la question"
         android:background="@drawable/edittext_background"
         android:padding="16dp"
         android:textColor="#000000"
         android:textColorHint="#888888"
         android:textSize="16sp"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="24dp"
+        android:importantForAutofill="yes"
+        android:autofillHints="question" />
 
-    <!-- Radio buttons for the 4 choices -->
+    <!-- Radio buttons for the 3 choices -->
     <RadioGroup
         android:id="@+id/radioGroupChoices"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="24dp">
+        android:layout_marginBottom="32dp">
 
-        <RadioButton
-            android:id="@+id/rbChoice1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choix 1" />
-        <RadioButton
-            android:id="@+id/rbChoice2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choix 2" />
-        <RadioButton
-            android:id="@+id/rbChoice3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choix 3" />
-        <RadioButton
-            android:id="@+id/rbChoice4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choix 4" />
+        <!-- Option 1 -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/rbChoice1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choix 1"
+                android:textSize="16sp"
+                android:padding="12dp" />
+            <EditText
+                android:id="@+id/etChoice1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Ajouter votre réponse"
+                android:background="@drawable/edittext_background"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <!-- Option 2 -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/rbChoice2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choix 2"
+                android:textSize="16sp"
+                android:padding="12dp" />
+            <EditText
+                android:id="@+id/etChoice2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Ajouter votre réponse"
+                android:background="@drawable/edittext_background"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <!-- Option 3 -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/rbChoice3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choix 3"
+                android:textSize="16sp"
+                android:padding="12dp" />
+            <EditText
+                android:id="@+id/etChoice3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Ajouter votre réponse"
+                android:background="@drawable/edittext_background"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
     </RadioGroup>
 
-    <!-- Buttons for navigation (Previous and Next) -->
+    <!-- Buttons to go to previous and next question -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:gravity="center">
 
+        <!-- Previous Button -->
         <Button
             android:id="@+id/btnPrevious"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Précédent"
-            android:textColor="#FFFFFF"
             android:backgroundTint="#FF4081"
-            android:padding="14dp" />
+            android:textColor="#FFFFFF"
+            android:padding="14dp"
+            android:layout_marginEnd="16dp" />
 
+        <!-- Next Button -->
         <Button
             android:id="@+id/btnNext"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Suivant"
             android:textColor="#FFFFFF"
             android:backgroundTint="#FF4081"
             android:padding="14dp" />
+
+        <!-- Confirm Button -->
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirmer"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF4081"
+            android:padding="14dp"
+            android:layout_marginTop="20dp"
+            android:visibility="gone" /> <!-- Initially hidden -->
+
     </LinearLayout>
+
 </LinearLayout>

@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.moitoi.QuizConfirmationActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -27,13 +26,14 @@ public class CreateQuizActivity extends AppCompatActivity {
     private String[] questions = new String[10];  // Stocke les 10 questions
     private String[][] choices = new String[10][3];  // Stocke les 3 réponses pour chaque question
     private String[] answers = new String[10];  // Stocke les réponses sélectionnées
+    private String quizCode;  // Variable pour stocker le code unique du quiz
 
     private EditText etQuestion;
     private RadioGroup radioGroupChoices;
     private RadioButton rbChoice1, rbChoice2, rbChoice3;
+    private EditText etChoice1, etChoice2, etChoice3;
     private Button btnNext;
     private TextView tvQuestionNumber;
-    String userId = UUID.randomUUID().toString(); // Génère un identifiant unique pour chaque utilisateur
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,60 +45,54 @@ public class CreateQuizActivity extends AppCompatActivity {
         rbChoice1 = findViewById(R.id.rbChoice1);
         rbChoice2 = findViewById(R.id.rbChoice2);
         rbChoice3 = findViewById(R.id.rbChoice3);
+        etChoice1 = findViewById(R.id.etChoice1);
+        etChoice2 = findViewById(R.id.etChoice2);
+        etChoice3 = findViewById(R.id.etChoice3);
         btnNext = findViewById(R.id.btnNext);
         tvQuestionNumber = findViewById(R.id.tvQuestionNumber);
 
-        // Charger les questions depuis Firestore
         loadQuizData();
 
-        // Bouton suivant pour passer à la question suivante
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Sauvegarder la réponse actuelle
-                saveAnswer();
-
-                // Passer à la question suivante
+        btnNext.setOnClickListener(v -> {
+            if (validateFields()) {
+                saveAnswer();  // Sauvegarder la réponse actuelle
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.length) {
                     displayQuestion();
                 } else {
-                    // Fin du quiz, passer à la prochaine activité
                     submitQuiz();
                 }
+            } else {
+                Toast.makeText(CreateQuizActivity.this, "Veuillez remplir tous les champs et sélectionner une réponse correcte.", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    // Fonction pour charger les questions depuis Firestore
     private void loadQuizData() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // Accéder à la collection des quizzes
         db.collection("MoiEtToi")
-                .document("quiz_1")  // Remplace par l'ID du quiz
-                .collection("questions")  // Sous-collection des questions
-                .get()  // Récupérer toutes les questions
+                .document("quiz_1")
+                .collection("questions")
+                .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot querySnapshot = task.getResult();
                         if (querySnapshot != null) {
                             for (QueryDocumentSnapshot document : querySnapshot) {
-                                // Récupère les questions et options depuis Firestore
                                 questions[currentQuestionIndex] = document.getString("question_text");
                                 choices[currentQuestionIndex][0] = document.getString("option_1");
                                 choices[currentQuestionIndex][1] = document.getString("option_2");
                                 choices[currentQuestionIndex][2] = document.getString("option_3");
                             }
                         }
-                        displayQuestion();  // Afficher la première question
+                        displayQuestion();
                     } else {
                         Toast.makeText(getApplicationContext(), "Erreur de chargement des questions", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    // Affiche la question actuelle
     private void displayQuestion() {
         etQuestion.setText(questions[currentQuestionIndex]);
         rbChoice1.setText(choices[currentQuestionIndex][0]);
@@ -107,43 +101,64 @@ public class CreateQuizActivity extends AppCompatActivity {
         tvQuestionNumber.setText("Question " + (currentQuestionIndex + 1));
     }
 
-    // Sauvegarde la réponse sélectionnée
     private void saveAnswer() {
         int selectedId = radioGroupChoices.getCheckedRadioButtonId();
         if (selectedId != -1) {
+            // Récupère la réponse sélectionnée parmi les RadioButtons
             RadioButton selectedRadioButton = findViewById(selectedId);
             answers[currentQuestionIndex] = selectedRadioButton.getText().toString();
         }
+
+        // Récupère la réponse saisie dans EditText pour chaque option
+        String choice1Answer = etChoice1.getText().toString();
+        String choice2Answer = etChoice2.getText().toString();
+        String choice3Answer = etChoice3.getText().toString();
+
+        // Stocker les réponses dans le tableau
+        answers[currentQuestionIndex] = "Choice 1: " + choice1Answer + ", Choice 2: " + choice2Answer + ", Choice 3: " + choice3Answer;
     }
 
-    // Soumettre le quiz et enregistrer les réponses dans Firestore
-    // Fonction pour soumettre le quiz et enregistrer les réponses dans Firestore
+    private boolean validateFields() {
+        // Vérifier si la question est remplie
+        if (etQuestion.getText().toString().isEmpty()) {
+            return false;
+        }
+
+        // Vérifier si une réponse est sélectionnée
+        int selectedId = radioGroupChoices.getCheckedRadioButtonId();
+        if (selectedId == -1) {
+            return false;
+        }
+
+        // Vérifier si tous les choix sont remplis
+        if (etChoice1.getText().toString().isEmpty() || etChoice2.getText().toString().isEmpty() || etChoice3.getText().toString().isEmpty()) {
+            return false;
+        }
+
+        return true; // Si tout est validé, retourner true
+    }
+
     private void submitQuiz() {
-        // Crée une map avec les réponses
+        quizCode = UUID.randomUUID().toString();  // Code unique pour ce quiz
+
         Map<String, Object> userResponses = new HashMap<>();
         for (int i = 0; i < answers.length; i++) {
             userResponses.put("question_" + (i + 1), answers[i]);
         }
 
-        // Initialisation de Firebase Firestore
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        // Créer un document parent (par exemple 'quiz_1')
-        // Ajouter une sous-collection 'user_responses' sous ce document
-        db.collection("MoiEtToi")  // Référence à la base 'moiettoi'
-                .document("quiz_1")  // Document parent (ex. quiz_1)
-                .collection("user_responses")  // Sous-collection des réponses des utilisateurs
-                .document(userId)  // Créer un document pour chaque utilisateur avec un ID unique
-                .set(userResponses)  // Utilise 'set()' pour enregistrer les données dans ce document
+        db.collection("MoiEtToi")
+                .document("quiz_1")
+                .collection("user_responses")
+                .document(quizCode)  // Utiliser le code unique comme ID du document
+                .set(userResponses)
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(getApplicationContext(), "Quiz soumis avec succès", Toast.LENGTH_SHORT).show();
-                    // Naviguer vers l'écran suivant (confirmation ou autre)
-                    Intent intent = new Intent(CreateQuizActivity.this, QuizConfirmationActivity.class);
+                    Intent intent = new Intent(CreateQuizActivity.this, EnterQuizCodeActivity.class);
+                    intent.putExtra("quizCode", quizCode);
                     startActivity(intent);
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getApplicationContext(), "Erreur lors de l'enregistrement", Toast.LENGTH_SHORT).show();
                 });
     }
-
 }
