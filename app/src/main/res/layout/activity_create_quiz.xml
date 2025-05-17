@@ -1,38 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_vertical"
-    android:background="#F4F4F9">
+    android:padding="16dp"
+    android:background="#FFFFFF"
+    android:gravity="center_vertical">
 
-    <!-- Title showing the current question number -->
+    <!-- Quit Button -->
+    <Button
+        android:id="@+id/btnQuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quitter"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#D32F2F"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:layout_gravity="end"
+        android:layout_marginBottom="16dp"
+        android:visibility="visible"
+        android:elevation="2dp" />
+
+    <!-- Question Number -->
     <TextView
         android:id="@+id/tvQuestionNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Question 1"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#333333"
-        android:layout_marginBottom="20dp" />
+        android:textColor="#212121"
+        android:fontFamily="sans-serif"
+        android:layout_marginBottom="24dp" />
 
-    <!-- Input field for the question -->
+    <!-- Question Input -->
     <EditText
         android:id="@+id/etQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Entrez la question"
-        android:background="@drawable/edittext_background"
+        android:hint="Entrez votre question"
         android:padding="16dp"
-        android:textColor="#000000"
-        android:textColorHint="#888888"
+        android:textColor="#212121"
+        android:textColorHint="#757575"
         android:textSize="16sp"
+        android:fontFamily="sans-serif"
         android:layout_marginBottom="24dp"
         android:importantForAutofill="yes"
-        android:autofillHints="question" />
+        android:autofillHints="question"
+        android:inputType="textMultiLine"
+        android:minHeight="100dp" />
 
-    <!-- Radio buttons for the 3 choices -->
+    <!-- RadioGroup for Choices -->
     <RadioGroup
         android:id="@+id/radioGroupChoices"
         android:layout_width="match_parent"
@@ -40,89 +61,142 @@
         android:orientation="vertical"
         android:layout_marginBottom="32dp">
 
-        <!-- Option 1 -->
+        <!-- Choice 1 -->
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp"
+            android:padding="8dp"
+            android:elevation="1dp">
             <RadioButton
                 android:id="@+id/rbChoice1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choix 1"
-                android:textSize="16sp"
-                android:padding="12dp" />
+                android:layout_gravity="center_vertical"
+                android:buttonTint="#3F51B5" />
             <EditText
                 android:id="@+id/etChoice1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Ajouter votre réponse"
-                android:background="@drawable/edittext_background"
+                android:hint="Entrez la première réponse"
+                android:background="@null"
                 android:padding="12dp"
-                android:textColor="#000000"
-                android:textSize="16sp"/>
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:textColorHint="#757575"
+                android:fontFamily="sans-serif" />
         </LinearLayout>
 
-        <!-- Option 2 -->
+        <!-- Choice 2 -->
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp"
+            android:padding="8dp"
+            android:elevation="1dp">
             <RadioButton
                 android:id="@+id/rbChoice2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choix 2"
-                android:textSize="16sp"
-                android:padding="12dp" />
+                android:layout_gravity="center_vertical"
+                android:buttonTint="#3F51B5" />
             <EditText
                 android:id="@+id/etChoice2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Ajouter votre réponse"
-                android:background="@drawable/edittext_background"
+                android:hint="Entrez la deuxième réponse"
+                android:background="@null"
                 android:padding="12dp"
-                android:textColor="#000000"
-                android:textSize="16sp"/>
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:textColorHint="#757575"
+                android:fontFamily="sans-serif" />
         </LinearLayout>
 
-        <!-- Option 3 -->
+        <!-- Choice 3 -->
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp"
+            android:padding="8dp"
+            android:elevation="1dp">
             <RadioButton
                 android:id="@+id/rbChoice3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choix 3"
-                android:textSize="16sp"
-                android:padding="12dp" />
+                android:layout_gravity="center_vertical"
+                android:buttonTint="#3F51B5" />
             <EditText
                 android:id="@+id/etChoice3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Ajouter votre réponse"
-                android:background="@drawable/edittext_background"
+                android:hint="Entrez la troisième réponse"
+                android:background="@null"
                 android:padding="12dp"
-                android:textColor="#000000"
-                android:textSize="16sp"/>
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:textColorHint="#757575"
+                android:fontFamily="sans-serif" />
         </LinearLayout>
-
     </RadioGroup>
 
-    <!-- Button to go to the next question -->
-    <Button
-        android:id="@+id/btnNext"
+    <!-- Navigation Buttons -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Suivant"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <!-- Previous Button -->
+        <Button
+            android:id="@+id/btnPrevious"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Précédent"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:backgroundTint="#2196F3"
+            android:padding="12dp"
+            android:layout_marginEnd="8dp"
+            android:elevation="2dp" />
+
+        <!-- Next Button -->
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Suivant"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:backgroundTint="#FF4081"
+            android:padding="12dp"
+            android:layout_marginStart="8dp"
+            android:elevation="2dp" />
+    </LinearLayout>
+
+    <!-- Confirm Button -->
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Générer Code"
         android:textColor="#FFFFFF"
-        android:backgroundTint="#FF4081"
-        android:padding="14dp"
-        android:layout_marginTop="16dp" />
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#4CAF50"
+        android:padding="12dp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:elevation="2dp" />
 
 </LinearLayout>
