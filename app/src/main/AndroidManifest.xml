@@ -32,7 +32,9 @@
         <activity android:name=".AboutActivity" />
         <activity android:name=".AboutPage" />
         <activity android:name=".EnterQuizCodeActivity" />
-
+        <activity
+            android:name=".DisplayQuestionsActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
 
 
 

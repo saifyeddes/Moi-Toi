@@ -26,13 +26,23 @@ public class InterfaceChoix extends AppCompatActivity {
 
         // Clic sur la carte "Répondre au Quiz"
         LinearLayout btnAnswerQuiz = findViewById(R.id.btnAnswerQuiz);
-        btnAnswerQuiz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Action pour "Répondre au Quiz", par exemple ouvrir une autre activité
-                Intent intent = new Intent(InterfaceChoix.this, EnterQuizCodeActivity.class); // Remplace par l'activité réelle
-                startActivity(intent);
-            }
-        });
+        if (btnAnswerQuiz != null) {
+            btnAnswerQuiz.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    android.util.Log.d("InterfaceChoix", "Clic sur Répondre au Quiz");
+                    try {
+                        // Action pour "Répondre au Quiz"
+                        Intent intent = new Intent(InterfaceChoix.this, EnterQuizCodeActivity.class);
+                        startActivity(intent);
+                        android.util.Log.d("InterfaceChoix", "Intent lancé avec succès");
+                    } catch (Exception e) {
+                        android.util.Log.e("InterfaceChoix", "Erreur lors du lancement de l'activité", e);
+                    }
+                }
+            });
+        } else {
+            android.util.Log.e("InterfaceChoix", "btnAnswerQuiz est null");
+        }
     }
 }
