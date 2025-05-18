@@ -54,8 +54,8 @@ public class QuizConfirmationActivity extends AppCompatActivity {
         btnViewScore.setOnClickListener(v -> {
             if (quizCode != null && responseId != null) {
                 Intent scoreIntent = new Intent(QuizConfirmationActivity.this, ScoreActivity.class);
+                // Envoyer uniquement le score (déjà calculé sur 10)
                 scoreIntent.putExtra("SCORE", score);
-                scoreIntent.putExtra("TOTAL", totalQuestions);
                 startActivity(scoreIntent);
             }
         });
