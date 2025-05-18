@@ -17,8 +17,9 @@ import java.util.List;
 public class QuizConfirmationActivity extends AppCompatActivity {
 
     private static final String TAG = "QuizConfirmationActivity";
-    private TextView tvScore;
-    private Button btnReturn;
+    private Button btnReturn, btnViewAnswers, btnViewScore;
+    private int score = 0;
+    private int totalQuestions = 10;
     private String quizCode;
     private String responseId;
     private FirebaseFirestore db;
@@ -29,8 +30,9 @@ public class QuizConfirmationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_confirmation);
 
         // Initialize UI components
-        tvScore = findViewById(R.id.tvScore);
         btnReturn = findViewById(R.id.btnReturn);
+        btnViewAnswers = findViewById(R.id.btnViewAnswers);
+        btnViewScore = findViewById(R.id.btnViewScore);
         db = FirebaseFirestore.getInstance();
 
         // Retrieve quiz code and response ID
@@ -45,14 +47,37 @@ public class QuizConfirmationActivity extends AppCompatActivity {
         }
         Log.d(TAG, "Quiz code: " + quizCode + ", Response ID: " + responseId);
 
-        // Calculate and display score
+        // Calculate score
         calculateScore();
+        
+        // Setup view score button
+        btnViewScore.setOnClickListener(v -> {
+            if (quizCode != null && responseId != null) {
+                Intent scoreIntent = new Intent(QuizConfirmationActivity.this, ScoreActivity.class);
+                scoreIntent.putExtra("SCORE", score);
+                scoreIntent.putExtra("TOTAL", totalQuestions);
+                startActivity(scoreIntent);
+            }
+        });
 
         // Return to main menu
         btnReturn.setOnClickListener(v -> {
             Intent intent = new Intent(QuizConfirmationActivity.this, InterfaceChoix.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
+        });
+
+        // View answers
+        btnViewAnswers.setOnClickListener(v -> {
+            if (quizCode != null && responseId != null) {
+                Intent intent = new Intent(QuizConfirmationActivity.this, AnswersActivity.class);
+                intent.putExtra("QUIZ_CODE", quizCode);
+                intent.putExtra("RESPONSE_ID", responseId);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Erreur: Impossible d'afficher les réponses", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -80,8 +105,11 @@ public class QuizConfirmationActivity extends AppCompatActivity {
                                         List<Integer> userAnswers = new ArrayList<>();
                                         List<Integer> correctAnswers = new ArrayList<>();
 
+                                        // Set total questions
+                                        totalQuestions = quizDoc.getData().size();
+                                        
                                         // Load user answers
-                                        for (int i = 1; i <= 10; i++) {
+                                        for (int i = 1; i <= totalQuestions; i++) {
                                             String fieldName = "answer_" + i;
                                             Object answerObj = userDoc.get(fieldName);
                                             Log.d(TAG, "User answer field " + fieldName + ": " + answerObj);
@@ -98,7 +126,7 @@ public class QuizConfirmationActivity extends AppCompatActivity {
                                         Log.d(TAG, "User answers: " + userAnswers);
 
                                         // Load correct answers using "choix_<i>"
-                                        for (int i = 1; i <= 10; i++) {
+                                        for (int i = 1; i <= totalQuestions; i++) {
                                             String fieldName = "choix_" + i;
                                             Object correctObj = quizDoc.get(fieldName);
                                             Log.d(TAG, "Correct answer field " + fieldName + ": " + correctObj);
@@ -114,23 +142,16 @@ public class QuizConfirmationActivity extends AppCompatActivity {
                                         }
                                         Log.d(TAG, "Correct answers: " + correctAnswers);
 
-                                        // Calculate score
                                         int correctCount = 0;
-                                        for (int i = 0; i < Math.min(userAnswers.size(), correctAnswers.size()); i++) {
-                                            int userAnswer = userAnswers.get(i);
-                                            int correctAnswer = correctAnswers.get(i);
-                                            Log.d(TAG, "Comparing question " + (i + 1) + ": user=" + userAnswer + ", correct=" + correctAnswer);
-                                            if (userAnswer == correctAnswer) {
+                                        for (int i = 0; i < userAnswers.size(); i++) {
+                                            if (i < correctAnswers.size() && userAnswers.get(i).equals(correctAnswers.get(i))) {
                                                 correctCount++;
                                             }
                                         }
-                                        Log.d(TAG, "Correct answers count: " + correctCount);
-
-                                        // Scale to 10
-                                        int totalQuestions = Math.max(1, correctAnswers.size());
-                                        int score = (int) Math.round((double) correctCount / totalQuestions * 10);
-                                        tvScore.setText("Votre score: " + score + "/10");
-                                        Log.d(TAG, "Score calculated: " + score + "/10 (total questions: " + totalQuestions + ")");
+                                        // Calculer le score sur 10
+                                        score = (int) Math.round((double) correctCount / totalQuestions * 10);
+                                        Log.d(TAG, "Correct answers count: " + correctCount + "/" + totalQuestions);
+                                        Log.d(TAG, "Score calculated: " + score + "/10");
                                     } else {
                                         Log.e(TAG, "Quiz document not found");
                                         Toast.makeText(this, "Erreur: Quiz introuvable", Toast.LENGTH_SHORT).show();

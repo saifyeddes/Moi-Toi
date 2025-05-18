@@ -35,8 +35,14 @@
         <activity
             android:name=".DisplayQuestionsActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-
-
+        
+        <activity
+            android:name=".AnswersActivity"
+            android:theme="@style/Theme.MoiToi" />
+            
+        <activity
+            android:name=".ScoreActivity"
+            android:theme="@style/Theme.MoiToi" />
 
     </application>
 </manifest>
