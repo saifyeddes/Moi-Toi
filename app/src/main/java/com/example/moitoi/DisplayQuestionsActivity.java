@@ -3,15 +3,12 @@ package com.example.moitoi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -47,27 +44,6 @@ public class DisplayQuestionsActivity extends AppCompatActivity {
             Toast.makeText(this, "Erreur d'initialisation de l'écran", Toast.LENGTH_LONG).show();
             finish();
             return;
-        }
-
-        // Configure Toolbar (make it optional)
-        try {
-            androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-            if (toolbar != null) {
-                setSupportActionBar(toolbar);
-                if (getSupportActionBar() != null) {
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                    getSupportActionBar().setTitle("Quiz");
-                    Log.d(TAG, "Toolbar configured successfully");
-                } else {
-                    Log.w(TAG, "getSupportActionBar returned null; action bar not available");
-                }
-            } else {
-                Log.w(TAG, "Toolbar not found in layout; proceeding without toolbar");
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Error configuring toolbar: " + e.getMessage(), e);
-            Toast.makeText(this, "Erreur de configuration de la barre d'outils", Toast.LENGTH_LONG).show();
-            // Do NOT finish the activity; proceed to display questions
         }
 
         // Initialize UI components
@@ -210,7 +186,7 @@ public class DisplayQuestionsActivity extends AppCompatActivity {
         }
         responseData.put("quizCode", quizCode);
 
-        String responseId = String.valueOf((int) (Math.random() * 900000) + 100000);
+        String responseId = db.collection("MoiEtToi").document("quiz_1").collection("user_answers").document().getId();
         Log.d(TAG, "Submitting answers with responseId: " + responseId);
         db.collection("MoiEtToi")
                 .document("quiz_1")
@@ -221,7 +197,8 @@ public class DisplayQuestionsActivity extends AppCompatActivity {
                     Log.d(TAG, "Answers submitted successfully");
                     Toast.makeText(DisplayQuestionsActivity.this, "Réponses soumises avec succès", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(DisplayQuestionsActivity.this, QuizConfirmationActivity.class);
-                    intent.putExtra("quizCode", quizCode);
+                    intent.putExtra("QUIZ_CODE", quizCode);
+                    intent.putExtra("RESPONSE_ID", responseId);
                     startActivity(intent);
                     finish();
                 })
@@ -229,15 +206,5 @@ public class DisplayQuestionsActivity extends AppCompatActivity {
                     Log.e(TAG, "Error submitting answers: " + e.getMessage(), e);
                     Toast.makeText(DisplayQuestionsActivity.this, "Erreur lors de l'enregistrement des réponses: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            Log.d(TAG, "Back button pressed");
-            onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
