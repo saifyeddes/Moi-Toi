@@ -30,7 +30,7 @@ public class InterfaceChoix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Action pour "Répondre au Quiz", par exemple ouvrir une autre activité
-                Intent intent = new Intent(InterfaceChoix.this, AboutActivity.class); // Remplace par l'activité réelle
+                Intent intent = new Intent(InterfaceChoix.this, EnterQuizCodeActivity.class); // Remplace par l'activité réelle
                 startActivity(intent);
             }
         });

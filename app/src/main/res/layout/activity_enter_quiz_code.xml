@@ -1,10 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center"
-    android:background="#FAFAFA">
+    android:background="#E3F2FD">
+
+    <!-- Logo ou icône (optionnel, commentez si non utilisé) -->
+    <!--
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_quiz_logo"
+        android:contentDescription="Logo du quiz"
+        android:layout_marginBottom="20dp" />
+    -->
 
     <!-- Titre -->
     <TextView
@@ -12,10 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Entrez le code du quiz"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#333333"
-        android:layout_marginBottom="20dp" />
+        android:textColor="#1E88E5"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="sans-serif-medium" />
 
     <!-- Champ pour entrer le code du quiz -->
     <EditText
@@ -24,17 +36,26 @@
         android:layout_height="wrap_content"
         android:hint="Entrez le code ici"
         android:textSize="16sp"
-        android:padding="16dp"
+        android:padding="12dp"
         android:textColor="#000000"
+        android:textColorHint="#757575"
+        android:background="@drawable/edittext_background"
+        android:imeOptions="actionDone"
+        android:inputType="textCapCharacters"
+        android:maxLength="10"
         android:layout_marginBottom="24dp" />
 
     <!-- Bouton pour soumettre -->
     <Button
         android:id="@+id/btnSubmitCode"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:text="Soumettre"
+        android:textSize="16sp"
         android:textColor="#FFFFFF"
-        android:backgroundTint="#4CAF50"
-        android:padding="14dp" />
+        android:backgroundTint="#1E88E5"
+        android:padding="12dp"
+        android:elevation="4dp"
+        android:layout_marginHorizontal="16dp" />
+
 </LinearLayout>

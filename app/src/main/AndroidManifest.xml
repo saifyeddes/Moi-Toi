@@ -31,6 +31,8 @@
         <activity android:name=".RepondreQuizActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".AboutPage" />
+        <activity android:name=".EnterQuizCodeActivity" />
+
 
 
 
