@@ -107,6 +107,7 @@ public class QuizConfirmationActivity extends AppCompatActivity {
 
                                         // Set total questions
                                         totalQuestions = quizDoc.getData().size();
+                                        Log.d(TAG, "Total questions in quiz: " + totalQuestions);
                                         
                                         // Load user answers
                                         for (int i = 1; i <= totalQuestions; i++) {
@@ -142,16 +143,24 @@ public class QuizConfirmationActivity extends AppCompatActivity {
                                         }
                                         Log.d(TAG, "Correct answers: " + correctAnswers);
 
-                                        int correctCount = 0;
-                                        for (int i = 0; i < userAnswers.size(); i++) {
-                                            if (i < correctAnswers.size() && userAnswers.get(i).equals(correctAnswers.get(i))) {
-                                                correctCount++;
+                                        // Compter simplement le nombre de bonnes réponses
+                                        score = 0;
+                                        int minSize = Math.min(userAnswers.size(), correctAnswers.size());
+                                        
+                                        for (int i = 0; i < minSize; i++) {
+                                            Integer userAnswer = userAnswers.get(i);
+                                            Integer correctAnswer = correctAnswers.get(i);
+                                            
+                                            if (userAnswer != null && correctAnswer != null && userAnswer.equals(correctAnswer)) {
+                                                score++;
                                             }
+                                            Log.d(TAG, String.format("Q%d: User=%s, Correct=%s, Match=%b", 
+                                                i+1, userAnswer, correctAnswer, 
+                                                (userAnswer != null && correctAnswer != null && userAnswer.equals(correctAnswer))));
                                         }
-                                        // Calculer le score sur 10
-                                        score = (int) Math.round((double) correctCount / totalQuestions * 10);
-                                        Log.d(TAG, "Correct answers count: " + correctCount + "/" + totalQuestions);
-                                        Log.d(TAG, "Score calculated: " + score + "/10");
+                                        
+                                        // Le score est directement le nombre de bonnes réponses
+                                        Log.d(TAG, String.format("Bonnes réponses: %d/10", score));
                                     } else {
                                         Log.e(TAG, "Quiz document not found");
                                         Toast.makeText(this, "Erreur: Quiz introuvable", Toast.LENGTH_SHORT).show();
